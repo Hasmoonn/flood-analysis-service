@@ -10,8 +10,8 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent))
 
 if __name__ == "__main__":
-  port = int(os.getenv("PORT", 8000))
-  host = os.getenv("HOST", "localhost")
+  port = int(os.getenv("PORT", 10000))
+  host = "0.0.0.0"
 
   print(f"Starting Flood Analyzer API on {host}:{port}...")
   print("API Documentation available at:")
@@ -23,6 +23,5 @@ if __name__ == "__main__":
     'main:app', 
     host=host, 
     port=port, 
-    reload=True, 
     log_level="info"
   )
