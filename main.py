@@ -23,7 +23,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # initialize genai
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+model = genai.GenerativeModel("gemini-2.0-flash")
 
 app = FastAPI(
   title="Flood Analyzer API",
@@ -196,13 +197,7 @@ async def analyze_image(file: UploadFile = File(...)):
     for attempt in range(max_retries):
       try:
         # Use gemini-2.0-flash model - more stable with higher quotas
-        response = client.models.generate_content(
-          model="gemini-2.0-flash",
-          contents=[
-            prompt,
-            image  # PIL image works directly
-          ]
-        )
+        response = model.generate_content([prompt, image])
 
         parsed_data = parse_gemini_response(response.text)
         break  # Success - exit retry loop
