@@ -233,4 +233,5 @@ async def analyze_image(file: UploadFile = File(...)):
     raise HTTPException(status_code=500, detail="An error occurred while analyzing the image.")
 
 if __name__ == "__main__":
-  uvicorn.run('main:app', host='localhost', port=8000, reload=True, log_level="info")
+  port = int(os.getenv("PORT", 10000))
+  uvicorn.run("main:app", host="0.0.0.0", port=port, log_level="info")
