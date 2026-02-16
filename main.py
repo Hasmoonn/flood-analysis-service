@@ -7,8 +7,7 @@ import uvicorn
 import asyncio
 from datetime import datetime
 import logging
-from google import genai
-# import google.generativeai as genai
+import google.generativeai as genai
 from dotenv import load_dotenv
 import base64
 import io
