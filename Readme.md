@@ -1,4 +1,4 @@
-# 🌊 AI Flood Risk Detection API
+# 🌧️ Smart Flood Risk Analysis API
 
 A FastAPI-based backend service that evaluates flood risks from terrain images using Google’s Gemini AI. This API processes uploaded images, analyzes environmental features, and returns structured flood risk insights.
 
